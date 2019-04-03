@@ -216,7 +216,7 @@ func (d *Driver) Create() error {
 
 	if err := cmd("Hyper-V\\New-VM",
 		d.MachineName,
-		"-Path", fmt.Sprintf("'%s'", d.ResolveStorePath(".")),
+		"-Path", quote(d.ResolveStorePath(".")),
 		"-SwitchName", quote(virtualSwitch),
 		"-MemoryStartupBytes", toMb(d.MemSize)); err != nil {
 		return err
